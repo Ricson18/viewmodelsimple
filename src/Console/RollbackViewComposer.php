@@ -1,6 +1,6 @@
 <?php
 
-namespace viewmodelsimple\simple\Console;
+namespace viewmodelsimple\Console;
 
 use Illuminate\Console\Command;
 

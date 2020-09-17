@@ -1,5 +1,5 @@
 {
-    "name": "viewmodelsimple/simple",
+    "name": "viewmodelsimple",
     "description": "Generates a basic structure of View Composer in Laravel on execution of 'view:model' console command.",
     "license": "MIT",
     "authors": [
@@ -14,13 +14,13 @@
     },
     "autoload": {
         "psr-4": {
-            "viewmodelsimple\\simple\\": "src/"
+            "viewmodelsimple\\": "src/"
         }
     },
     "extra": {
         "laravel":{
             "providers":[
-                "viewmodelsimple\\simple\\ViewComposerSimpleBaseServiceProvider"
+                "viewmodelsimple\\ViewComposerSimpleBaseServiceProvider"
             ]
         }
     }

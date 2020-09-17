@@ -1,6 +1,6 @@
 <?php
 
-namespace viewmodelsimple\simple;
+namespace viewmodelsimple;
 
 use Illuminate\Support\ServiceProvider;
 
