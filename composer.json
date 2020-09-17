@@ -1,5 +1,5 @@
 {
-    "name": "viewmodelsimple",
+    "name": "viewmodelsimple/simple",
     "description": "Generates a basic structure of View Composer in Laravel on execution of 'view:model' console command.",
     "license": "MIT",
     "authors": [
