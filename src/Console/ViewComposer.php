@@ -3,6 +3,7 @@
 namespace viewmodelsimple\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Filesystem\Filesystem;
 
 class ViewComposer extends Command
 {
@@ -14,6 +15,7 @@ class ViewComposer extends Command
      */
     protected $signature = 'view:composer {composer}';
 
+    protected $files;
     /**
      * The console command description.
      *
@@ -26,8 +28,10 @@ class ViewComposer extends Command
      *
      * @return void
      */
-    public function __construct()
+    // public function __construct()
+    public function __construct(Filesystem $files)
     {
+        $this->files=$files;
         parent::__construct();
     }
 
@@ -81,19 +85,27 @@ class '.$viewComposer.'
         $path=app_path();
         
         $file=$path."/ViewComposers/$file";
+        $composerDir=$path."/ViewComposers";
 
-        if(file_exists("$path/ViewComposers")){
-            if(file_exists($file)){
+        
+        // if(file_exists($composerDir)){
+        //     if(file_exists($file)){
+        if($this->files->isDirectory($composerDir)){
+            if($this->files->isFile($file))
                 return $this->error($viewComposer.' File Already exists!');
-            }
-            if(!file_put_contents($file, $contents)) 
+            
+            // if(!file_put_contents($file, $contents)) 
+            if(!$this->files->put($file, $contents))
                 return $this->error('Something went wrong!');
             $this->info("$viewComposer generated!");
         }
         else{
-            mkdir("$path/ViewComposers");
+            $this->files->makeDirectory($composerDir, 0777, true, true);
 
-            if(!file_put_contents($file, $contents)) 
+            // mkdir($composerDir);
+            
+            // if(!file_put_contents($file, $contents)) 
+            if(!$this->files->put($file, $contents))
                 return $this->error('Something went wrong!');
             $this->info("$viewComposer generated!");
         }
