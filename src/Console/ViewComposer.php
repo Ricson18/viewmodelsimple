@@ -87,14 +87,10 @@ class '.$viewComposer.'
         $file=$path."/ViewComposers/$file";
         $composerDir=$path."/ViewComposers";
 
-        
-        // if(file_exists($composerDir)){
-        //     if(file_exists($file)){
         if($this->files->isDirectory($composerDir)){
             if($this->files->isFile($file))
                 return $this->error($viewComposer.' File Already exists!');
             
-            // if(!file_put_contents($file, $contents)) 
             if(!$this->files->put($file, $contents))
                 return $this->error('Something went wrong!');
             $this->info("$viewComposer generated!");
@@ -102,9 +98,6 @@ class '.$viewComposer.'
         else{
             $this->files->makeDirectory($composerDir, 0777, true, true);
 
-            // mkdir($composerDir);
-            
-            // if(!file_put_contents($file, $contents)) 
             if(!$this->files->put($file, $contents))
                 return $this->error('Something went wrong!');
             $this->info("$viewComposer generated!");
